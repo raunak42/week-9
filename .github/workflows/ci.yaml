@@ -23,6 +23,7 @@ jobs:
         echo "$SSH_PRIVATE_KEY" > keyfile
         chmod 600 keyfile
         mkdir -p ~/.ssh
-        cp known_hosts ~/.ssh/known_hosts   ####github's ubuntu machine has acces to the repo which contains yaml file. This happened bacause of checkout@v2
+      #cp known_hosts ~/.ssh/known_hosts   ####github's ubuntu machine has acces to the repo which contains yaml file. This happened bacause of checkout@v2
+        ssh-keyscan ec2-16-171-175-49.eu-north-1.compute.amazonaws.com >> ~/.ssh/known_hosts
         ssh -t -i keyfile ubuntu@ec2-16-171-175-49.eu-north-1.compute.amazonaws.com "sudo bash ~/deploy.sh"
 
